@@ -1,0 +1,15 @@
+menu "Machine selection"
+
+config MACH_NOKIA_DEADPOOL
+	bool "Nokia 3.2 (Deadpool)"
+	depends on ARCH_SDM429
+	help
+	  Nokia 3.2 (Deadpool)
+
+config MACH_NOKIA_PANTHER
+	bool "Nokia 4.2 (Panther)"
+	depends on ARCH_SDM439
+	help
+	  Nokia 4.2 (Panther)
+
+endmenu

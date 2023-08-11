@@ -1,0 +1,15 @@
+menu "Nokia SDM439 platform"
+	depends on ARCH_SDM439
+
+config MACH_NOKIA_SDM439
+	bool "Support for Nokia SDM439 platform"
+	help
+	  Say Y here to enable support for Nokia SDM439 platform.
+
+if MACH_NOKIA_SDM439
+
+source "techpack/nokia-sdm439/mach/Kconfig"
+
+endif # MACH_NOKIA_SDM439
+
+endmenu
