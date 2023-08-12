@@ -1,0 +1,4 @@
+obj-$(CONFIG_TOUCHSCREEN_FTS)		+= focaltech_touch/
+obj-$(CONFIG_TOUCHSCREEN_GT9XX)		+= gt9xx/
+obj-$(CONFIG_TOUCHSCREEN_HIMAX_I2C)	+= hxchipset/
+obj-$(CONFIG_TOUCHSCREEN_SINTRONIX_TS)	+= st16xx/
