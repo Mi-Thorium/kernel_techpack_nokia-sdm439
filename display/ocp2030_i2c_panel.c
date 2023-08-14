@@ -5,6 +5,7 @@
 #include <linux/slab.h>
 #include <linux/gpio.h>
 #include <linux/of_gpio.h>
+#include <nokia-sdm439/ocp2030_i2c_panel.h>
 //#include <cust_i2c.h>
 //#include "cust_gpio_usage.h"
 //#include "lcm_drv.h"
