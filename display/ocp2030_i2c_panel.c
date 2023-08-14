@@ -9,7 +9,7 @@
 //#include <cust_i2c.h>
 //#include "cust_gpio_usage.h"
 //#include "lcm_drv.h"
-#include "mdss_panel.h"
+//#include "mdss_panel.h"
 //#include <linux/debugfs.h>
 
 #define OCP2131_DEV_NAME "ocp2131"
