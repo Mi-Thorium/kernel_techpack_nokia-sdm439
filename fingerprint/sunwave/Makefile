@@ -1,3 +1,3 @@
 #sunwave driver file
-obj-y	+= sf_ctl.o sf_hw.o
+obj-$(CONFIG_SUNWAVE_FINGERPRINT) += sf_ctl.o sf_hw.o
 

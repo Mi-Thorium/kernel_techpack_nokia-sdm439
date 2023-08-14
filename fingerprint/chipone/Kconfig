@@ -1,7 +1,4 @@
 config CHIPONE_FINGERPRINT
-        tristate "Chipone Finger Print Driver"
-		default y
-        help
-          Chipone Finger Print Supported
-
-
+	tristate "Chipone Finger Print Driver"
+	help
+	  Chipone Finger Print Supported
