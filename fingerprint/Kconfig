@@ -1,0 +1,6 @@
+menu "Fingerprint"
+
+source "techpack/nokia-sdm439/fingerprint/chipone/Kconfig"
+source "techpack/nokia-sdm439/fingerprint/sunwave/Kconfig"
+
+endmenu

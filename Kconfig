@@ -10,6 +10,8 @@ if MACH_NOKIA_SDM439
 
 source "techpack/nokia-sdm439/mach/Kconfig"
 
+source "techpack/nokia-sdm439/fingerprint/Kconfig"
+
 endif # MACH_NOKIA_SDM439
 
 endmenu

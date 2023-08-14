@@ -1,0 +1,2 @@
+obj-$(CONFIG_CHIPONE_FINGERPRINT) += chipone/
+obj-$(CONFIG_SUNWAVE_FINGERPRINT) += sunwave/
