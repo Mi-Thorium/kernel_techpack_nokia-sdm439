@@ -1,10 +1,8 @@
-//add for ocp2031 +-5v panel power on
-typedef enum
-{
+// add for ocp2031 +-5v panel power on
+typedef enum {
 	LCM_LDO_VOL_0V,
 
-	
-    	LCM_LDO_VOL_4V0,
+	LCM_LDO_VOL_4V0,
 	LCM_LDO_VOL_4V1,
 	LCM_LDO_VOL_4V2,
 	LCM_LDO_VOL_4V3,
@@ -26,9 +24,8 @@ typedef enum
 	LCM_LDO_VOL_5V9,
 	LCM_LDO_VOL_6V0,
 
-
 	LCM_LDO_VOL_MAX,
-}LCM_LDO_VOLTAGE_E;
+} LCM_LDO_VOLTAGE_E;
 
-//add for ocp2031 +-5v panel power on
-int ocp2131_set_voltage(LCM_LDO_VOLTAGE_E avdd,LCM_LDO_VOLTAGE_E avee);
+// add for ocp2031 +-5v panel power on
+int ocp2131_set_voltage(LCM_LDO_VOLTAGE_E avdd, LCM_LDO_VOLTAGE_E avee);
