@@ -22,13 +22,13 @@
 #include <linux/types.h>
 #include <linux/i2c.h>
 #include <linux/interrupt.h>
-#if defined(CONFIG_HMX_DB)
+#if defined(CONFIG_HMX_DB_NOKIA439)
 #include <linux/regulator/consumer.h>
 #endif
 
 #define QCT
 
-#if defined(CONFIG_TOUCHSCREEN_HIMAX_DEBUG)
+#if defined(CONFIG_TOUCHSCREEN_HIMAX_DEBUG_NOKIA439)
 #define D(x...) printk("[HXTP] " x)
 #define I(x...) printk("[HXTP] " x)
 #define W(x...) printk("[HXTP][WARNING] " x)
@@ -45,7 +45,7 @@
 #define DIF(x...)
 #endif
 
-#if defined(CONFIG_HMX_DB)
+#if defined(CONFIG_HMX_DB_NOKIA439)
 /* Analog voltage @2.7 V */
 #define HX_VTG_MIN_UV			2700000
 #define HX_VTG_MAX_UV			3300000
@@ -97,7 +97,7 @@ struct himax_i2c_platform_data
     struct kobj_attribute *vk2Use;
 
     int hx_config_size;
-#if defined(CONFIG_HMX_DB)
+#if defined(CONFIG_HMX_DB_NOKIA439)
     bool	i2c_pull_up;
     bool	digital_pwr_regulator;
     int reset_gpio;

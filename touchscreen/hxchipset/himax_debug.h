@@ -26,7 +26,7 @@ extern 	int hx_EC_event_flag;
 extern 	int hx_ED_event_flag;
 #endif
 
-#if defined(CONFIG_TOUCHSCREEN_HIMAX_DEBUG)
+#if defined(CONFIG_TOUCHSCREEN_HIMAX_DEBUG_NOKIA439)
 #define HIMAX_PROC_TOUCH_FOLDER 	"android_touch"
 #define HIMAX_PROC_DEBUG_LEVEL_FILE	"debug_level"
 #define HIMAX_PROC_VENDOR_FILE		"vendor"
@@ -56,7 +56,7 @@ extern int himax_int_en_set(struct i2c_client *client);
 static struct proc_dir_entry *himax_proc_guest_info_file 	= NULL;
 #endif
 
-#if defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
 #define HIMAX_PROC_ITO_TEST_FILE		"ITO_test"
 static struct proc_dir_entry *himax_proc_ito_test_file 		= NULL;
 

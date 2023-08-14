@@ -61,7 +61,7 @@
 #define FLASH_DUMP_FILE "/sdcard/HX_Flash_Dump.bin"
 #define HX_TP_PROC_DIAG
 
-#if defined(CONFIG_TOUCHSCREEN_HIMAX_DEBUG)
+#if defined(CONFIG_TOUCHSCREEN_HIMAX_DEBUG_NOKIA439)
 #define HX_TP_PROC_REGISTER
 #define HX_TP_PROC_DEBUG
 #define HX_TP_PROC_FLASH_DUMP
@@ -360,7 +360,7 @@ struct himax_ts_data
     uint8_t *cable_config;
 #endif
 
-#if defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
     struct workqueue_struct *ito_test_wq;
     struct work_struct ito_test_work;
 #endif
@@ -435,7 +435,7 @@ enum gesture_event_type
 #define KEY_CUST_15 265
 #endif
 
-#if defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
 extern uint8_t himax_ito_test(void);
 #endif
 

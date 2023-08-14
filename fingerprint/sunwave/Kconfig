@@ -1,4 +1,4 @@
-config SUNWAVE_FINGERPRINT
+config SUNWAVE_FINGERPRINT_NOKIA439
 	tristate "Sunwave Fingerprint"
 	help
 	  SUNWAVECORP Fingerprint

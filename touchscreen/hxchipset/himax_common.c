@@ -92,7 +92,7 @@ extern int g_zero_event_count;
 #endif
 u8 	HX_HW_RESET_ACTIVATE = 0;
 
-#if defined(CONFIG_TOUCHSCREEN_HIMAX_DEBUG)
+#if defined(CONFIG_TOUCHSCREEN_HIMAX_DEBUG_NOKIA439)
 extern int himax_touch_proc_init(void);
 extern void himax_touch_proc_deinit(void);
 //PROC-START
@@ -188,7 +188,7 @@ static int gn_gesture_coor[16];
 struct chip_monitor_data *g_chip_monitor_data;
 #endif
 
-#if defined(HX_TP_PROC_SELF_TEST)|| defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(HX_TP_PROC_SELF_TEST)|| defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
 extern int g_self_test_entered;
 #endif
 
@@ -402,7 +402,7 @@ int himax_loadSensorConfig(struct i2c_client *client, struct himax_i2c_platform_
 void himax_esd_hw_reset(void)
 {
     I("START_Himax TP: ESD - Reset\n");
-#if defined(HX_TP_PROC_SELF_TEST) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(HX_TP_PROC_SELF_TEST) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
     if (g_self_test_entered == 1)
     {
         I("In self test ,not  TP: ESD - Reset\n");
@@ -1345,7 +1345,7 @@ int himax_checksum_cal(struct himax_ts_data *ts,uint8_t *buf,int ts_status)
 #if defined(HX_TP_PROC_DIAG)
                 && (hx_touch_data->diag_cmd == 0)
 #endif
-#if defined(HX_TP_PROC_SELF_TEST) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(HX_TP_PROC_SELF_TEST) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
                 && (g_self_test_entered == 0)
 #endif
            )
@@ -1701,7 +1701,7 @@ static void himax_fb_register(struct work_struct *work)
 }
 #endif
 
-#if defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
 static void himax_ito_test_work(struct work_struct *work)
 {
     I(" %s in\n", __func__);
@@ -2030,7 +2030,7 @@ FW_force_upgrade:
     ts->HSEN_enable=0;
 #endif
 
-#if defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
     ts->ito_test_wq = create_singlethread_workqueue("himax_ito_test_wq");
     if (!ts->ito_test_wq)
     {
@@ -2047,7 +2047,7 @@ FW_force_upgrade:
     if(err)
         goto err_report_data_init_failed;
 
-#if defined(CONFIG_TOUCHSCREEN_HIMAX_DEBUG)
+#if defined(CONFIG_TOUCHSCREEN_HIMAX_DEBUG_NOKIA439)
     himax_touch_proc_init();
 #endif
 
@@ -2070,12 +2070,12 @@ FW_force_upgrade:
     return 0;
 
 err_register_interrupt_failed:
-#if defined(CONFIG_TOUCHSCREEN_HIMAX_DEBUG)
+#if defined(CONFIG_TOUCHSCREEN_HIMAX_DEBUG_NOKIA439)
     himax_touch_proc_deinit();
 #endif
 err_report_data_init_failed:
 
-#if defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
 	destroy_workqueue(ts->ito_test_wq);
 err_ito_test_wq_failed:
 #endif
@@ -2169,11 +2169,11 @@ if (!ts->use_irq)
 	destroy_workqueue(ts->himax_wq);
 }
 
-#if defined(CONFIG_TOUCHSCREEN_HIMAX_DEBUG)
+#if defined(CONFIG_TOUCHSCREEN_HIMAX_DEBUG_NOKIA439)
 	  himax_touch_proc_deinit();
 #endif
 
-#if defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
 	  destroy_workqueue(ts->ito_test_wq);
 #endif
 #ifdef HX_SMART_WAKEUP

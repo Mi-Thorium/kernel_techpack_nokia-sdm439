@@ -1,7 +1,7 @@
 #
 # Goodix GT9xx Touchscreen driver
 #
-config TOUCHSCREEN_GT9XX
+config TOUCHSCREEN_GT9XX_NOKIA439
 	bool "Goodix touchpanel GT9xx series"
 	depends on I2C
 	default y
@@ -11,9 +11,9 @@ config TOUCHSCREEN_GT9XX
 
           If unsure, say N.
 
-config TOUCHSCREEN_GT9XX_UPDATE
+config TOUCHSCREEN_GT9XX_UPDATE_NOKIA439
 	tristate "Goodix GT9xx touch controller auto update support"
-	depends on TOUCHSCREEN_GT9XX
+	depends on TOUCHSCREEN_GT9XX_NOKIA439
 	default y
 	help
 	  Enable this for support firmware update.
@@ -22,9 +22,9 @@ config TOUCHSCREEN_GT9XX_UPDATE
 
 	  If unsure, say N.
 
-config TOUCHSCREEN_GT9XX_TOOL
+config TOUCHSCREEN_GT9XX_TOOL_NOKIA439
 	tristate "Goodix GT9xx Tools for debuging"
-	depends on TOUCHSCREEN_GT9XX
+	depends on TOUCHSCREEN_GT9XX_NOKIA439
 	default y
 	help
 	  This implement interface support for Goodix GT9xx

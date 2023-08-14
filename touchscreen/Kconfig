@@ -5,11 +5,11 @@ source "techpack/nokia-sdm439/touchscreen/focaltech_touch/Kconfig"
 source "techpack/nokia-sdm439/touchscreen/gt9xx/Kconfig"
 source "techpack/nokia-sdm439/touchscreen/hxchipset/Kconfig"
 
-config TOUCHSCREEN_SINTRONIX_TS
-        bool "TOUCHSCREEN_SINTRONIX_TS"
+config TOUCHSCREEN_SINTRONIX_TS_NOKIA439
+        bool "TOUCHSCREEN_SINTRONIX_TS_NOKIA439"
         depends on I2C
         help
-          Say Y here if you have a TOUCHSCREEN_SINTRONIX_TS touchscreen.
+          Say Y here if you have a TOUCHSCREEN_SINTRONIX_TS_NOKIA439 touchscreen.
           Gt9xx controllers are multi touch controllers which can
           report 5 touches at a time.
 
