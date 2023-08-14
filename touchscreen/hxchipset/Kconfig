@@ -4,15 +4,14 @@
 
 config TOUCHSCREEN_HIMAX_I2C_NOKIA439
         tristate "HIMAX chipset i2c touchscreen"
-		depends on TOUCHSCREEN_HIMAX_CHIPSET_NOKIA439
-		help
-		This enables support for HIMAX CHIPSET over I2C based touchscreens.
+	help
+	  This enables support for HIMAX CHIPSET over I2C based touchscreens.
 
 config TOUCHSCREEN_HIMAX_DEBUG_NOKIA439
         tristate "HIMAX debug function"
-		depends on TOUCHSCREEN_HIMAX_I2C_NOKIA439
-		help
-		This enables support for HIMAX debug function.
+	depends on TOUCHSCREEN_HIMAX_I2C_NOKIA439
+	help
+	  This enables support for HIMAX debug function.
 
 config TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439
 	tristate "HIMAX driver test over Dragon Board"
