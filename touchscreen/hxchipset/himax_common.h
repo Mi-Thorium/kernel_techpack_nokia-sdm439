@@ -51,11 +51,8 @@
 #endif
 
 //begin,compatible both 89571 and 89626 tp , added by tanwenchao.wt,20190121
-#ifdef CONFIG_PROJECT_T89626
-#define HIMAX_DRIVER_VER "0.2.13.0_N2_03"
-#else
-#define HIMAX_DRIVER_VER "0.2.13.0_N3_0B"
-#endif
+#define HIMAX_DRIVER_VER_T89626 "0.2.13.0_N2_03"
+#define HIMAX_DRIVER_VER_T89571 "0.2.13.0_N3_0B"
 //begin,compatible both 89571 and 89626 tp , added by tanwenchao.wt,20190121
 
 #define FLASH_DUMP_FILE "/sdcard/HX_Flash_Dump.bin"

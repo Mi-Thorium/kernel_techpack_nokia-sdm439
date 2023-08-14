@@ -13,6 +13,7 @@
 *
 */
 
+#include <nokia-sdm439/mach.h>
 #include "himax_debug.h"
 #include "himax_ic.h"
 
@@ -236,7 +237,10 @@ static ssize_t himax_vendor_read(struct file *file, char *buf,
         ret += snprintf(temp_buf + ret, len - ret, "\n");
 
         ret += snprintf(temp_buf + ret, len - ret, "Himax Touch Driver Version:\n");
-        ret += snprintf(temp_buf + ret, len - ret, "%s \n", HIMAX_DRIVER_VER);
+        if (nokia_sdm439_mach_get() == NOKIA_SDM439_MACH_DEADPOOL)
+            ret += snprintf(temp_buf + ret, len - ret, "%s \n", HIMAX_DRIVER_VER_T89626);
+        if (nokia_sdm439_mach_get() == NOKIA_SDM439_MACH_PANTHER)
+            ret += snprintf(temp_buf + ret, len - ret, "%s \n", HIMAX_DRIVER_VER_T89571);
 
         HX_PROC_SEND_FLAG=1;
         if(copy_to_user(buf, temp_buf, len))
@@ -1777,7 +1781,10 @@ static ssize_t himax_debug_read(struct file *file, char *buf,
             ret += snprintf(temp_buf + ret, len - ret, "\n");
 
             ret += snprintf(temp_buf + ret, len - ret, "Himax Touch Driver Version:\n");
-            ret += snprintf(temp_buf + ret, len - ret, "%s \n", HIMAX_DRIVER_VER);
+            if (nokia_sdm439_mach_get() == NOKIA_SDM439_MACH_DEADPOOL)
+                ret += snprintf(temp_buf + ret, len - ret, "%s \n", HIMAX_DRIVER_VER_T89626);
+            if (nokia_sdm439_mach_get() == NOKIA_SDM439_MACH_PANTHER)
+                ret += snprintf(temp_buf + ret, len - ret, "%s \n", HIMAX_DRIVER_VER_T89571);
         }
         else if (debug_level_cmd == 'd')
         {
