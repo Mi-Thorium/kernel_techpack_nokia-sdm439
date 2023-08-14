@@ -4,7 +4,6 @@
 config TOUCHSCREEN_GT9XX_NOKIA439
 	bool "Goodix touchpanel GT9xx series"
 	depends on I2C
-	default y
 	help
 	  Say Y here if you have a Goodix GT9xx touchscreen
 	  controller.
@@ -14,7 +13,6 @@ config TOUCHSCREEN_GT9XX_NOKIA439
 config TOUCHSCREEN_GT9XX_UPDATE_NOKIA439
 	tristate "Goodix GT9xx touch controller auto update support"
 	depends on TOUCHSCREEN_GT9XX_NOKIA439
-	default y
 	help
 	  Enable this for support firmware update.
 
@@ -25,7 +23,6 @@ config TOUCHSCREEN_GT9XX_UPDATE_NOKIA439
 config TOUCHSCREEN_GT9XX_TOOL_NOKIA439
 	tristate "Goodix GT9xx Tools for debuging"
 	depends on TOUCHSCREEN_GT9XX_NOKIA439
-	default y
 	help
 	  This implement interface support for Goodix GT9xx
 	  touchscreen debug.
