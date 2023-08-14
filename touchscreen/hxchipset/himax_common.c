@@ -13,6 +13,7 @@
 *
 */
 
+#include <nokia-sdm439/mach.h>
 #include "himax_common.h"
 #include "himax_ic.h"
 
@@ -31,13 +32,14 @@ extern bool get_upmu_is_chr_det(void);
 
 #if defined(HX_AUTO_UPDATE_FW)
 //begin,update for both 89571 and 89626 tp FW, added by fangzhihua.wt,20181126
-#ifdef CONFIG_PROJECT_T89626
-unsigned char i_CTPM_FW[]=
+#ifdef CONFIG_MACH_NOKIA_DEADPOOL
+unsigned char i_CTPM_FW_T89626[]=
 {
 #include "T89626_N2_HLT_Nokia_CID4901_5A_C05_20190222.i"     //T89626
 };
-#else
-unsigned char i_CTPM_FW[]=
+#endif
+#ifdef CONFIG_MACH_NOKIA_PANTHER
+unsigned char i_CTPM_FW_T89571[]=
 {
 #include "T89571_HLT_Nokia_CID4405_C08_20190629.i"     //T89571
 };
@@ -329,9 +331,25 @@ void calculate_point_number(void)
 static int i_update_FW(void)
 {
     int upgrade_times = 0;
-    unsigned char* ImageBuffer = i_CTPM_FW;
-    int fullFileLength = sizeof(i_CTPM_FW);
+    unsigned char* ImageBuffer;
+    int fullFileLength = 0;
     uint8_t ret = 0, result = 0;
+
+#ifdef CONFIG_MACH_NOKIA_DEADPOOL
+    if (nokia_sdm439_mach_get() == NOKIA_SDM439_MACH_DEADPOOL) {
+        ImageBuffer = i_CTPM_FW_T89626;
+        fullFileLength = sizeof(i_CTPM_FW_T89626);
+    }
+#endif
+#ifdef CONFIG_MACH_NOKIA_PANTHER
+    if (nokia_sdm439_mach_get() == NOKIA_SDM439_MACH_PANTHER) {
+        ImageBuffer = i_CTPM_FW_T89571;
+        fullFileLength = sizeof(i_CTPM_FW_T89571);
+    }
+#endif
+
+    if (!fullFileLength)
+        return 0;
 
     I("%s: i_fullFileLength = %d\n", __func__,fullFileLength);
 

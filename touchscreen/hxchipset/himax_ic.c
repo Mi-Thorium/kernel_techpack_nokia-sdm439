@@ -13,6 +13,7 @@
 *
 */
 
+#include <nokia-sdm439/mach.h>
 #include "himax_ic.h"
 
 extern struct himax_ts_data *private_ts;
@@ -94,7 +95,12 @@ extern int g_i_FW_VER;
 extern int g_i_CFG_VER;
 extern int g_i_CID_MAJ;
 extern int g_i_CID_MIN;
-extern unsigned char i_CTPM_FW[];
+#ifdef CONFIG_MACH_NOKIA_DEADPOOL
+extern unsigned char i_CTPM_FW_T89626[];
+#endif
+#ifdef CONFIG_MACH_NOKIA_PANTHER
+extern unsigned char i_CTPM_FW_T89571[];
+#endif
 #endif
 
 extern unsigned char	IC_TYPE;
@@ -2028,8 +2034,18 @@ bool himax_ic_package_check(struct i2c_client *client)
         FW_VER_MIN_FLASH_LENG   = 1;
         FW_CFG_VER_FLASH_ADDR	= 132;  //0x0084
 #ifdef HX_AUTO_UPDATE_FW
-        g_i_FW_VER = i_CTPM_FW[FW_VER_MAJ_FLASH_ADDR]<<8 |i_CTPM_FW[FW_VER_MIN_FLASH_ADDR];
-        g_i_CFG_VER = i_CTPM_FW[FW_CFG_VER_FLASH_ADDR];
+#ifdef CONFIG_MACH_NOKIA_DEADPOOL
+        if (nokia_sdm439_mach_get() == NOKIA_SDM439_MACH_DEADPOOL) {
+            g_i_FW_VER = i_CTPM_FW_T89626[FW_VER_MAJ_FLASH_ADDR]<<8 |i_CTPM_FW_T89626[FW_VER_MIN_FLASH_ADDR];
+            g_i_CFG_VER = i_CTPM_FW_T89626[FW_CFG_VER_FLASH_ADDR];
+        }
+#endif
+#ifdef CONFIG_MACH_NOKIA_PANTHER
+        if (nokia_sdm439_mach_get() == NOKIA_SDM439_MACH_PANTHER) {
+            g_i_FW_VER = i_CTPM_FW_T89571[FW_VER_MAJ_FLASH_ADDR]<<8 |i_CTPM_FW_T89571[FW_VER_MIN_FLASH_ADDR];
+            g_i_CFG_VER = i_CTPM_FW_T89571[FW_CFG_VER_FLASH_ADDR];
+        }
+#endif
         g_i_CID_MAJ = -1;
         g_i_CID_MIN = -1;
 #endif
