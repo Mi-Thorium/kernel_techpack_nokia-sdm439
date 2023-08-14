@@ -34,36 +34,36 @@ static int ocp2131_power_enable(int enn , int enp);
 
 struct 
 {	
-	LCM_LDO_VOLTAGE_E vol;
+	NOKIA_SDM439_LCM_LDO_VOLTAGE_E vol;
 	int reg_value;
 } ocp2131_vol_reg[] ={
 	//Frequently-used
-	{LCM_LDO_VOL_5V8,0x12},
-	{LCM_LDO_VOL_5V5,0x0f},
+	{NOKIA_SDM439_LCM_LDO_VOL_5V8,0x12},
+	{NOKIA_SDM439_LCM_LDO_VOL_5V5,0x0f},
 
-	{LCM_LDO_VOL_4V0,0x00},
-	{LCM_LDO_VOL_4V1,0x01},
-	{LCM_LDO_VOL_4V2,0x02},
-	{LCM_LDO_VOL_4V3,0x03},
-	{LCM_LDO_VOL_4V4,0x04},
-	{LCM_LDO_VOL_4V5,0x05},
-	{LCM_LDO_VOL_4V6,0x06},
-	{LCM_LDO_VOL_4V7,0x07},
-	{LCM_LDO_VOL_4V8,0x08},
-	{LCM_LDO_VOL_4V9,0x09},
-	{LCM_LDO_VOL_5V0,0x0a},
-	{LCM_LDO_VOL_5V1,0x0b},
-	{LCM_LDO_VOL_5V2,0x0c},
-	{LCM_LDO_VOL_5V3,0x0d},
-	{LCM_LDO_VOL_5V4,0x0e},
+	{NOKIA_SDM439_LCM_LDO_VOL_4V0,0x00},
+	{NOKIA_SDM439_LCM_LDO_VOL_4V1,0x01},
+	{NOKIA_SDM439_LCM_LDO_VOL_4V2,0x02},
+	{NOKIA_SDM439_LCM_LDO_VOL_4V3,0x03},
+	{NOKIA_SDM439_LCM_LDO_VOL_4V4,0x04},
+	{NOKIA_SDM439_LCM_LDO_VOL_4V5,0x05},
+	{NOKIA_SDM439_LCM_LDO_VOL_4V6,0x06},
+	{NOKIA_SDM439_LCM_LDO_VOL_4V7,0x07},
+	{NOKIA_SDM439_LCM_LDO_VOL_4V8,0x08},
+	{NOKIA_SDM439_LCM_LDO_VOL_4V9,0x09},
+	{NOKIA_SDM439_LCM_LDO_VOL_5V0,0x0a},
+	{NOKIA_SDM439_LCM_LDO_VOL_5V1,0x0b},
+	{NOKIA_SDM439_LCM_LDO_VOL_5V2,0x0c},
+	{NOKIA_SDM439_LCM_LDO_VOL_5V3,0x0d},
+	{NOKIA_SDM439_LCM_LDO_VOL_5V4,0x0e},
 	
-	{LCM_LDO_VOL_5V6,0x10},
-	{LCM_LDO_VOL_5V7,0x11},
+	{NOKIA_SDM439_LCM_LDO_VOL_5V6,0x10},
+	{NOKIA_SDM439_LCM_LDO_VOL_5V7,0x11},
 	
-	{LCM_LDO_VOL_5V9,0x13},
-	{LCM_LDO_VOL_6V0,0x14},
+	{NOKIA_SDM439_LCM_LDO_VOL_5V9,0x13},
+	{NOKIA_SDM439_LCM_LDO_VOL_6V0,0x14},
 
-	{LCM_LDO_VOL_MAX,0xff}
+	{NOKIA_SDM439_LCM_LDO_VOL_MAX,0xff}
 };
 
 
@@ -82,12 +82,12 @@ static int ocp2131_read_chip_info(struct i2c_client *client)
 }
 
 
-int ocp2131_set_voltage(LCM_LDO_VOLTAGE_E avdd,LCM_LDO_VOLTAGE_E avee){
+int nokia_sdm439_ocp2131_set_voltage(NOKIA_SDM439_LCM_LDO_VOLTAGE_E avdd,NOKIA_SDM439_LCM_LDO_VOLTAGE_E avee){
 	u8 i = 0;
 	u8 reg_value_avdd =0xff;
 	u8 reg_value_avee =0xff;
 
-	if(avdd == LCM_LDO_VOL_0V || avee == LCM_LDO_VOL_0V){
+	if(avdd == NOKIA_SDM439_LCM_LDO_VOL_0V || avee == NOKIA_SDM439_LCM_LDO_VOL_0V){
 		//SET_PWR_PIN(0);
                 ocp2131_power_enable(0 , 0);
 		printk("%s,write config:%x,%x\n",__FUNCTION__,avdd,avee);
@@ -97,7 +97,7 @@ int ocp2131_set_voltage(LCM_LDO_VOLTAGE_E avdd,LCM_LDO_VOLTAGE_E avee){
 	if(i2c_client == NULL)
 		return -1;
 	
-	while(ocp2131_vol_reg[i].vol != LCM_LDO_VOL_MAX){
+	while(ocp2131_vol_reg[i].vol != NOKIA_SDM439_LCM_LDO_VOL_MAX){
 		if(avdd == ocp2131_vol_reg[i].vol)
 			reg_value_avdd = ocp2131_vol_reg[i].reg_value;
 		if(avee == ocp2131_vol_reg[i].vol)
@@ -129,7 +129,7 @@ int ocp2131_set_voltage(LCM_LDO_VOLTAGE_E avdd,LCM_LDO_VOLTAGE_E avee){
 	printk("%s,write config:%x,%x\n",__FUNCTION__,avdd,avee);
 	return 0;
 }
-EXPORT_SYMBOL(ocp2131_set_voltage);
+EXPORT_SYMBOL(nokia_sdm439_ocp2131_set_voltage);
 
 
 static int ocp2131_parse_dt(struct device *dev)
