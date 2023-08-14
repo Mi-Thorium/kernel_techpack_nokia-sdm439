@@ -220,37 +220,40 @@
  * define your own fw_file, the sample one to be replaced is invalid
  * NOTE: if FTS_GET_MODULE_NUM > 1, it's the fw corresponding with FTS_VENDOR_ID
  */
-#if defined(CONFIG_PROJECT_T89626)
-#define FTS_UPGRADE_FW_FILE                      "include/firmware/T89626_DJ0x67_FT5446Q03_720x1520_V18_D01_20190621_app.i"
-#elif defined(CONFIG_PROJECT_T89572)
-#define FTS_UPGRADE_FW_FILE                      "include/firmware/Nokia_T89572AA1_14691A_DJ0x67_FT5446Q03_0x20_720x1520_V21_D01_20191031_app.i"
-#else  // defined(CONFIG_PROJECT_T89571)
-#define FTS_UPGRADE_FW_FILE                      "include/firmware/Nokia_14577A_DJ0x67_FT5446Q03_0x10_720x1520_V13_D01_20190315_app.i"
+#if defined(CONFIG_MACH_NOKIA_DEADPOOL)
+#define FTS_UPGRADE_FW_FILE_T89626                      "include/firmware/T89626_DJ0x67_FT5446Q03_720x1520_V18_D01_20190621_app.i"
 #endif
+#if defined(CONFIG_MACH_NOKIA_PANTHER)
+#define FTS_UPGRADE_FW_FILE_T89572                      "include/firmware/Nokia_T89572AA1_14691A_DJ0x67_FT5446Q03_0x20_720x1520_V21_D01_20191031_app.i"
+#endif
+//#else  // defined(CONFIG_PROJECT_T89571)
+//#define FTS_UPGRADE_FW_FILE                      "include/firmware/Nokia_14577A_DJ0x67_FT5446Q03_0x10_720x1520_V13_D01_20190315_app.i"
 
 /*
  * if FTS_GET_MODULE_NUM >= 2, fw corrsponding with FTS_VENDOR_ID2
  * define your own fw_file, the sample one is invalid
  */
-#if defined(CONFIG_PROJECT_T89626)
-#define FTS_UPGRADE_FW2_FILE                      "include/firmware/T89626_DJ0x67_FT5446Q03_720x1520_V18_D01_20190621_app.i"
-#elif defined(CONFIG_PROJECT_T89572)
-#define FTS_UPGRADE_FW2_FILE                      "include/firmware/Nokia_T89572AA1_14691A_DJ0x67_FT5446Q03_0x20_720x1520_V21_D01_20191031_app.i"
-#else// defined(CONFIG_PROJECT_T89571)
-#define FTS_UPGRADE_FW2_FILE                      "include/firmware/Nokia_14577A_DJ0x67_FT5446Q03_0x10_720x1520_V13_D01_20190315_app.i"
+#if defined(CONFIG_MACH_NOKIA_DEADPOOL)
+#define FTS_UPGRADE_FW2_FILE_T89626                      "include/firmware/T89626_DJ0x67_FT5446Q03_720x1520_V18_D01_20190621_app.i"
 #endif
+#if defined(CONFIG_MACH_NOKIA_PANTHER)
+#define FTS_UPGRADE_FW2_FILE_T89572                      "include/firmware/Nokia_T89572AA1_14691A_DJ0x67_FT5446Q03_0x20_720x1520_V21_D01_20191031_app.i"
+#endif
+//#else// defined(CONFIG_PROJECT_T89571)
+//#define FTS_UPGRADE_FW2_FILE                      "include/firmware/Nokia_14577A_DJ0x67_FT5446Q03_0x10_720x1520_V13_D01_20190315_app.i"
 
 /*
  * if FTS_GET_MODULE_NUM >= 3, fw corrsponding with FTS_VENDOR_ID3
  * define your own fw_file, the sample one is invalid
  */
-#if defined(CONFIG_PROJECT_T89626)
-#define FTS_UPGRADE_FW3_FILE                      "include/firmware/T89626_DJ0x67_FT5446Q03_720x1520_V18_D01_20190621_app.i"
-#elif defined(CONFIG_PROJECT_T89572)
-#define FTS_UPGRADE_FW3_FILE                      "include/firmware/Nokia_T89572AA1_14691A_DJ0x67_FT5446Q03_0x20_720x1520_V21_D01_20191031_app.i"
-#else// defined(CONFIG_PROJECT_T89571)
-#define FTS_UPGRADE_FW3_FILE                      "include/firmware/Nokia_14577A_DJ0x67_FT5446Q03_0x10_720x1520_V13_D01_20190315_app.i"
+#if defined(CONFIG_MACH_NOKIA_DEADPOOL)
+#define FTS_UPGRADE_FW3_FILE_T89626                      "include/firmware/T89626_DJ0x67_FT5446Q03_720x1520_V18_D01_20190621_app.i"
 #endif
+#if defined(CONFIG_MACH_NOKIA_PANTHER)
+#define FTS_UPGRADE_FW3_FILE_T89572                      "include/firmware/Nokia_T89572AA1_14691A_DJ0x67_FT5446Q03_0x20_720x1520_V21_D01_20191031_app.i"
+#endif
+//#else// defined(CONFIG_PROJECT_T89571)
+//#define FTS_UPGRADE_FW3_FILE                      "include/firmware/Nokia_14577A_DJ0x67_FT5446Q03_0x10_720x1520_V13_D01_20190315_app.i"
 
 /*********************************************************/
 

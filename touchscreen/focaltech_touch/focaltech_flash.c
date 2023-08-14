@@ -34,6 +34,7 @@
 *****************************************************************************/
 #include "focaltech_core.h"
 #include "focaltech_flash.h"
+#include <nokia-sdm439/mach.h>
 
 /*****************************************************************************
 * Static variables
@@ -45,23 +46,45 @@
 /*****************************************************************************
 * Global variable or extern global variabls/functions
 *****************************************************************************/
-u8 fw_file[] = {
-#include FTS_UPGRADE_FW_FILE
+#if defined(CONFIG_MACH_NOKIA_DEADPOOL)
+u8 fw_file_t89626[] = {
+#include FTS_UPGRADE_FW_FILE_T89626
 };
 
-u8 fw_file2[] = {
-#include FTS_UPGRADE_FW2_FILE
+u8 fw_file2_t89626[] = {
+#include FTS_UPGRADE_FW2_FILE_T89626
 };
 
-u8 fw_file3[] = {
-#include FTS_UPGRADE_FW3_FILE
+u8 fw_file3_t89626[] = {
+#include FTS_UPGRADE_FW3_FILE_T89626
 };
 
-struct upgrade_module module_list[] = {
-    {FTS_MODULE_ID, FTS_MODULE_NAME, fw_file, sizeof(fw_file)},
-    {FTS_MODULE2_ID, FTS_MODULE2_NAME, fw_file2, sizeof(fw_file2)},
-    {FTS_MODULE3_ID, FTS_MODULE3_NAME, fw_file3, sizeof(fw_file3)},
+struct upgrade_module module_list_t89626[] = {
+    {FTS_MODULE_ID, FTS_MODULE_NAME, fw_file_t89626, sizeof(fw_file_t89626)},
+    {FTS_MODULE2_ID, FTS_MODULE2_NAME, fw_file2_t89626, sizeof(fw_file2_t89626)},
+    {FTS_MODULE3_ID, FTS_MODULE3_NAME, fw_file3_t89626, sizeof(fw_file3_t89626)},
 };
+#endif
+
+#if defined(CONFIG_MACH_NOKIA_PANTHER)
+u8 fw_file_t89572[] = {
+#include FTS_UPGRADE_FW_FILE_T89572
+};
+
+u8 fw_file2_t89572[] = {
+#include FTS_UPGRADE_FW2_FILE_T89572
+};
+
+u8 fw_file3_t89572[] = {
+#include FTS_UPGRADE_FW3_FILE_T89572
+};
+
+struct upgrade_module module_list_t89572[] = {
+    {FTS_MODULE_ID, FTS_MODULE_NAME, fw_file_t89572, sizeof(fw_file_t89572)},
+    {FTS_MODULE2_ID, FTS_MODULE2_NAME, fw_file2_t89572, sizeof(fw_file2_t89572)},
+    {FTS_MODULE3_ID, FTS_MODULE3_NAME, fw_file3_t89572, sizeof(fw_file3_t89572)},
+};
+#endif
 
 struct upgrade_func *upgrade_func_list[] = {
     &upgrade_func_ft5422u,
@@ -1764,12 +1787,24 @@ static int fts_fwupg_get_module_info(struct fts_upgrade *upg)
 {
     int ret = 0;
     int i = 0;
-    struct upgrade_module *info = &module_list[0];
+    struct upgrade_module *info;
 
     if (!upg || !upg->ts_data) {
         FTS_ERROR("upg/ts_data is null");
         return -EINVAL;
     }
+
+#ifdef CONFIG_MACH_NOKIA_DEADPOOL
+    if (nokia_sdm439_mach_get() == NOKIA_SDM439_MACH_DEADPOOL)
+        info = &module_list_t89626[0];
+#endif
+#ifdef CONFIG_MACH_NOKIA_PANTHER
+    if (nokia_sdm439_mach_get() == NOKIA_SDM439_MACH_PANTHER)
+        info = &module_list_t89572[0];
+#endif
+
+    if (!info)
+        return -ENODATA;
 
     if (FTS_GET_MODULE_NUM > 1) {
         /* support multi modules, must read correct module id(vendor id) */
@@ -1780,7 +1815,14 @@ static int fts_fwupg_get_module_info(struct fts_upgrade *upg)
         }
         FTS_INFO("module id:%04x", upg->module_id);
         for (i = 0; i < FTS_GET_MODULE_NUM; i++) {
-            info = &module_list[i];
+#ifdef CONFIG_MACH_NOKIA_DEADPOOL
+            if (nokia_sdm439_mach_get() == NOKIA_SDM439_MACH_DEADPOOL)
+                info = &module_list_t89626[i];
+#endif
+#ifdef CONFIG_MACH_NOKIA_PANTHER
+            if (nokia_sdm439_mach_get() == NOKIA_SDM439_MACH_PANTHER)
+                info = &module_list_t89572[i];
+#endif
             if (upg->module_id == info->id) {
                 FTS_INFO("module id match, get module info pass");
                 break;
