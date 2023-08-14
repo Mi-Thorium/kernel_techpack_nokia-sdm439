@@ -23,7 +23,7 @@
 #include "linux/version.h"
 
 #if ANDROID_WAKELOCK
-#include <linux/wakelock.h>
+#include <nokia-sdm439/wakelock.h>
 #endif
 
 #include <linux/miscdevice.h>

@@ -6,7 +6,7 @@
 #include <linux/module.h>
 #include <linux/mutex.h>
 #include <linux/platform_device.h>
-#include <linux/wakelock.h>
+#include <nokia-sdm439/wakelock.h>
 #include <net/sock.h>
 #include <linux/of.h>
 #include <linux/of_irq.h>
