@@ -100,7 +100,7 @@ typedef struct platform_driver sf_driver_t;
 
 
 typedef struct {
-	char wait_finger_down;
+	bool wait_finger_down;
 	struct work_struct work;
 } fastscreen_on_data_t;
 

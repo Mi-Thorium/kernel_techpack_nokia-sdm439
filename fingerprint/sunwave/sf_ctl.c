@@ -241,7 +241,7 @@ static irqreturn_t sf_ctl_device_irq(int irq, void *dev_id)
 	wake_lock_timeout(&sf_ctl_dev.wakelock, msecs_to_jiffies(2000));
 #endif
 
-	if ((fastscreen_dev->wait_finger_down == true)) {
+	if (fastscreen_dev->wait_finger_down) {
 		fastscreen_dev->wait_finger_down = false;
 		schedule_work(&fastscreen_dev->work);
 		printk("wingtech begin shecule work unblank");
