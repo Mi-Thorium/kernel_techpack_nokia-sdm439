@@ -49,7 +49,7 @@ int g_min_mutual = 255;
 int g_max_self = 0;
 int g_min_self = 255;
 
-#if defined(HX_TP_PROC_SELF_TEST) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(HX_TP_PROC_SELF_TEST) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
 int g_self_test_entered = 0;
 #endif
 
@@ -70,9 +70,9 @@ extern void himax_sys_reset(void);
 //	Segment : Himax PROC Debug Function
 //
 //=============================================================================================================
-#if defined(CONFIG_TOUCHSCREEN_HIMAX_DEBUG)
+#if defined(CONFIG_TOUCHSCREEN_HIMAX_DEBUG_NOKIA439)
 
-#if defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
 
 static ssize_t himax_ito_test_read(struct file *file, char *buf,
                                    size_t len, loff_t *pos)

@@ -1196,7 +1196,7 @@ static ssize_t gtp_workmode_show(struct device *dev,
 }
 static DEVICE_ATTR(workmode, 0444, gtp_workmode_show, NULL);
 
-#ifdef CONFIG_TOUCHSCREEN_GT9XX_UPDATE
+#ifdef CONFIG_TOUCHSCREEN_GT9XX_UPDATE_NOKIA439
 #define FW_NAME_MAX_LEN	80
 static ssize_t gtp_dofwupdate_store(struct device *dev,
 				    struct device_attribute *attr,
@@ -1309,7 +1309,7 @@ static struct attribute *gtp_attrs[] = {
 	&dev_attr_workmode.attr,
 	&dev_attr_productinfo.attr,
 
-#ifdef CONFIG_TOUCHSCREEN_GT9XX_UPDATE
+#ifdef CONFIG_TOUCHSCREEN_GT9XX_UPDATE_NOKIA439
 	&dev_attr_dofwupdate.attr,
 #endif
 
@@ -2042,7 +2042,7 @@ static int gtp_probe(struct i2c_client *client, const struct i2c_device_id *id)
 	if (ret < 0)
 		dev_info(&client->dev, "Panel un-initialize\n");
 
-#ifdef CONFIG_TOUCHSCREEN_GT9XX_UPDATE
+#ifdef CONFIG_TOUCHSCREEN_GT9XX_UPDATE_NOKIA439
     if(ts->pdata->auto_update) {
 		ret = gup_init_update_proc(ts);
 		if (ret < 0)
@@ -2079,7 +2079,7 @@ static int gtp_probe(struct i2c_client *client, const struct i2c_device_id *id)
 		goto exit_powermanager;
 	}
 
-#ifdef CONFIG_TOUCHSCREEN_GT9XX_TOOL
+#ifdef CONFIG_TOUCHSCREEN_GT9XX_TOOL_NOKIA439
 	init_wr_node(client);/*TODO judge return value */
 #endif
 
@@ -2124,7 +2124,7 @@ static int gtp_drv_remove(struct i2c_client *client)
 
 	sysfs_remove_group(&client->dev.kobj, &gtp_attr_group);
 
-#ifdef CONFIG_TOUCHSCREEN_GT9XX_TOOL
+#ifdef CONFIG_TOUCHSCREEN_GT9XX_TOOL_NOKIA439
 	uninit_wr_node();
 #endif
 

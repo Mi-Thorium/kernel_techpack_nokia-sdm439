@@ -324,7 +324,7 @@ uint8_t himax_int_gpio_read(int pinnum)
     return gpio_get_value(pinnum);
 }
 
-#if defined(CONFIG_HMX_DB)
+#if defined(CONFIG_HMX_DB_NOKIA439)
 static int himax_regulator_configure(struct i2c_client *client,struct himax_i2c_platform_data *pdata)
 {
     int retval;

@@ -404,7 +404,7 @@ ssize_t goodix_tool_write(struct file *filp, const char __user *buff,
 		/* add new command: reset guitar */
 		gtp_reset_guitar(gt_client, 20);
 	}
-#ifdef CONFIG_TOUCHSCREEN_GT9XX_UPDATE
+#ifdef CONFIG_TOUCHSCREEN_GT9XX_UPDATE_NOKIA439
 	else if (11 == cmd_head.wr) {/*Enter update mode!*/
 		if (FAIL == gup_enter_update_mode(gt_client))
 			return -EPERM;
@@ -503,7 +503,7 @@ ssize_t goodix_tool_read(struct file *file, char __user *page,
 					      IC_TYPE, sizeof(IC_TYPE));
 		return ret;
 	}
-#ifdef CONFIG_TOUCHSCREEN_GT9XX_UPDATE
+#ifdef CONFIG_TOUCHSCREEN_GT9XX_UPDATE_NOKIA439
 	else if (4 == cmd_head.wr) {
 		u8 progress_buf[4];
 

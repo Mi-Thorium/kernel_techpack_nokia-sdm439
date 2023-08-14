@@ -28,7 +28,7 @@ extern char tp_info[40];
 #ifdef HX_CHIP_STATUS_MONITOR
 extern struct chip_monitor_data *g_chip_monitor_data;
 #endif
-#if defined(HX_TP_SELF_TEST_DRIVER) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(HX_TP_SELF_TEST_DRIVER) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
 uint8_t test_counter = 0;
 uint8_t TEST_DATA_TIMES = 3;
 #endif
@@ -110,7 +110,7 @@ extern void setFlashDumpProgress(uint8_t progress);
 extern void setSysOperation(uint8_t operation);
 extern void setFlashDumpGoing(bool going);
 
-#if defined(HX_TP_SELF_TEST_DRIVER) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(HX_TP_SELF_TEST_DRIVER) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
 static int Selftest_flag;
 uint16_t *mutual_bank;
 uint16_t *self_bank;
@@ -572,7 +572,7 @@ Flash_Dump_i2c_transfer_error:
     setSysOperation(0);
 }
 
-#if defined(HX_TP_SELF_TEST_DRIVER) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(HX_TP_SELF_TEST_DRIVER) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
 void himax_get_raw_data(uint8_t diag_command, uint16_t mutual_num, uint16_t self_num)
 {
     uint8_t command_F1h_bank[2] = {0xF1, diag_command};
@@ -2123,7 +2123,7 @@ void diag_parse_raw_data(struct himax_report_data *hx_touch_data,int mul_num, in
 {
     int index = 0;
     int temp1, temp2,i;
-#if defined(HX_TP_SELF_TEST_DRIVER) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(HX_TP_SELF_TEST_DRIVER) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
     int cnt = 0;
     uint8_t command_F1h_bank[2] = {0xF1, 0x00};
 #endif
@@ -2144,7 +2144,7 @@ void diag_parse_raw_data(struct himax_report_data *hx_touch_data,int mul_num, in
             {
                 //mutual
                 mutual_data[index + i] = hx_touch_data->hx_rawdata_buf[i + 4]; //4: RawData Header
-#if defined(HX_TP_SELF_TEST_DRIVER) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(HX_TP_SELF_TEST_DRIVER) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
                 if (Selftest_flag == 1)
                 {
                     mutual_bank[index + i] = hx_touch_data->hx_rawdata_buf[i + 4];
@@ -2164,7 +2164,7 @@ void diag_parse_raw_data(struct himax_report_data *hx_touch_data,int mul_num, in
                 }
 
                 self_data[i+index-mul_num] = hx_touch_data->hx_rawdata_buf[i + 4]; //4: RawData Header
-#if defined(HX_TP_SELF_TEST_DRIVER) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(HX_TP_SELF_TEST_DRIVER) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
                 if (Selftest_flag == 1)
                 {
                     self_bank[i+index-mul_num] = hx_touch_data->hx_rawdata_buf[i + 4];
@@ -2173,7 +2173,7 @@ void diag_parse_raw_data(struct himax_report_data *hx_touch_data,int mul_num, in
 #endif
             }
         }
-#if defined(HX_TP_SELF_TEST_DRIVER) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST)
+#if defined(HX_TP_SELF_TEST_DRIVER) || defined(CONFIG_TOUCHSCREEN_HIMAX_ITO_TEST_NOKIA439)
         if (Selftest_flag == 1)
         {
             cnt = 0;

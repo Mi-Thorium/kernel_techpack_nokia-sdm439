@@ -1,4 +1,4 @@
-config CHIPONE_FINGERPRINT
+config CHIPONE_FINGERPRINT_NOKIA439
 	tristate "Chipone Finger Print Driver"
 	help
 	  Chipone Finger Print Supported
