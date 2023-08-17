@@ -58,6 +58,10 @@ static bool nokia_sdm439_mach_detect(void) {
 static int __init nokia_sdm439_mach_detect_init(void) {
 	int rc;
 
+	// Print version
+	pr_info("%s: Nokia SDM439 device tree git version: %s\n", __func__, NOKIA439_DT_GIT_VER);
+	pr_info("%s: Nokia SDM439 module git version: %s\n", __func__, NOKIA439_MODULE_GIT_VER);
+
 	// Detect
 	rc = nokia_sdm439_mach_detect();
 	if (!rc) {
