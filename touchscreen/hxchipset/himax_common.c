@@ -1880,10 +1880,6 @@ int himax_chip_common_probe(struct i2c_client *client, const struct i2c_device_i
 #endif
 	himax_read_FW_ver(client);
 
-	//begin:add tp hardware information by WT_fangzhihua, 2017-11-16
-	himax_get_tp_info(client);
-	//end:add tp hardware information by WT_fangzhihua, 2017-11-16
-
 #ifdef HX_AUTO_UPDATE_FW
 FW_force_upgrade:
     auto_update_flag |= (( ic_data->vendor_fw_ver < g_i_FW_VER ) || ( ic_data->vendor_config_ver < g_i_CFG_VER ));

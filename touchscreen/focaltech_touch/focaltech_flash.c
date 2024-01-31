@@ -91,31 +91,6 @@ struct upgrade_func *upgrade_func_list[] = {
 };
 
 struct fts_upgrade *fwupgrade;
-//begin:add tp hardware information by fangzhihua, 2017-10-15
-extern char tp_info[40];
-void fts_get_tp_info(void) {
-    struct fts_ts_data *ts_data = fts_data;
-    struct input_dev *input_dev = ts_data->input_dev;
-    u8 fwver = 0;
-
-    mutex_lock(&input_dev->mutex);
-    memset(tp_info, 0, sizeof(tp_info));
-#if FTS_ESDCHECK_EN
-    fts_esdcheck_proc_busy(1);
-#endif
-    if (fts_read_reg(FTS_REG_FW_VER, &fwver) < 0) {
-        sprintf(tp_info, "FT5446_DJIN");
-    }
-    else{
-        sprintf(tp_info, "FT5446_DJIN_V%02X", fwver);
-    }
-#if FTS_ESDCHECK_EN
-    fts_esdcheck_proc_busy(0);
-#endif
-    mutex_unlock(&input_dev->mutex);
-    FTS_INFO("tp_info: %s\n", tp_info);
-}
-//end:add tp hardware information by fangzhihua, 2017-10-15
 
 /*****************************************************************************
 * Static function prototypes

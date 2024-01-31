@@ -122,7 +122,4 @@ int himax_read_FW_status(uint8_t *state_addr, uint8_t *tmp_addr);
 void himax_resume_ic_action(struct i2c_client *client);
 void himax_suspend_ic_action(struct i2c_client *client);
 void himax_ic_reset(uint8_t loadconfig,uint8_t int_off);
-//begin:add tp hardware information by WT_fangzhihua, 2017-11-22
-void himax_get_tp_info(struct i2c_client *client);
-//end:add tp hardware information by WT_fangzhihua, 2017-11-22
 #endif

@@ -118,7 +118,6 @@ struct proc_dir_entry *sitronix_touch_proc_dir;
 #define SITRONIX_PROC_TOUCH_LOCKDOWN 	"lockdown_info"
 struct proc_dir_entry *sitronix_proc_lockdown_file = NULL;
 //end,for lockdown node, fangzhihua.wt, 20191016
-extern char tp_info[40];   //add hardware TP info, wt.fangzhihua,20190924
 char sitronix_sensor_key_status = 0;
 struct sitronix_sensor_key_t sitronix_sensor_key_array[] = {
 	{KEY_MENU}, // bit 2
@@ -1689,7 +1688,7 @@ static ssize_t st_fw_version_show(struct device *dev, struct device_attribute *a
 	stmsg("%s",__func__);
 	mutex_lock(&sitronix_ts_gpts.dev_mutex);
 
-	num_read_chars = sprintf(buf, "%s\n",tp_info);//add hardware TP info, wt.fangzhihua,20190924
+	num_read_chars = sprintf(buf, "Unknown\n");
 	mutex_unlock(&sitronix_ts_gpts.dev_mutex);
 
 	return num_read_chars;
@@ -2187,11 +2186,6 @@ static int sitronix_ts_probe(struct i2c_client *client, const struct i2c_device_
 	stinf("gpio num:%d, irq num:%d\n",CTP_IRQ_NUMBER,sitronix_ts_gpts.client->irq);
 
 	mutex_init(&sitronix_ts_gpts.dev_mutex);
-	//add hardware TP info, wt.fangzhihua,20190924
-	memset(tp_info,0,sizeof(tp_info));
-	sprintf(tp_info,"st14348_HXD_V%02X",sitronix_ts_gpts.fw_version[0]);
-	sterr("tp_info : %s ",tp_info);
-	//end,add hardware TP info, wt.fangzhihua,20190924
 
 #ifdef SITRONIX_IDENTIFY_ID
 	if((ret = sitronix_ts_identify(&sitronix_ts_gpts)) < 0)

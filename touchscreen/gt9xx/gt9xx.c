@@ -34,9 +34,6 @@ static const char *goodix_ts_name = "goodix-ts";
 static const char *goodix_input_phys = "input/ts";
 struct i2c_client *i2c_connect_client;
 static struct proc_dir_entry *gtp_config_proc;
-//begin:add tp hardware information by fangzhihua, 2017-11-16
-extern char tp_info[40];
-//end:add tp hardware information by fangzhihua, 2017-11-16
 
 enum doze {
 	DOZE_DISABLED = 0,
@@ -1377,10 +1374,6 @@ s32 gtp_get_fw_info(struct i2c_client *client, struct goodix_fw_info *fw_info)
 	
 	/* current firmware version */
 	fw_info->version = (buf[7] << 8) | buf[6];
-	//begin:add tp hardware information by fangzhihua, 2017-11-16
-	sprintf(tp_info, "GT917D_DACHENG_V%02X", fw_info->version);
-	dev_info(&client->dev, "fzh 2 IC Version: %s\n",tp_info);
-	//end:add tp hardware information by fangzhihua, 2017-11-16
 	/* read sensor id */
 	fw_info->sensor_id = 0xff;
 	ret = gtp_i2c_read_dbl_check(client, GTP_REG_SENSOR_ID,

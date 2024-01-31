@@ -22,10 +22,6 @@ static bool iref_found = false;
 
 extern int i2c_error_count;
 
-//begin:add tp hardware information by fangzhihua, 2017-11-22
-extern char tp_info[40];
-//end:add tp hardware information by fangzhihua, 2017-11-22
-
 #ifdef HX_CHIP_STATUS_MONITOR
 extern struct chip_monitor_data *g_chip_monitor_data;
 #endif
@@ -1991,26 +1987,6 @@ void himax_read_FW_ver(struct i2c_client *client)
 
     return;
 }
-
-//begin:add tp hardware information by WT_fangzhihua, 2017-11-22
-void himax_get_tp_info(struct i2c_client *client)
-{
-    uint8_t data[64];
-    //read config version
-    if (i2c_himax_read(client, HX_VER_FW_CFG, data, 1, 3) < 0)
-    {
-        E("%s: i2c access fail!\n", __func__);
-        return;
-    }
-    ic_data->vendor_config_ver = data[0];
-    I("fw_ver=%x.\n",ic_data->vendor_config_ver);
-
-    sprintf(tp_info, "hx8527_HLT_V%02X", ic_data->vendor_config_ver);
-    I("fzh 2 IC Version: %s\n",tp_info);
-
-    return;
-}
-//end:add tp hardware information by WT_fangzhihua, 2017-11-22
 
 bool himax_ic_package_check(struct i2c_client *client)
 {

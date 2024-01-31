@@ -85,10 +85,6 @@ struct fts_ts_data *fts_data;
 static int fts_ts_suspend(struct device *dev);
 static int fts_ts_resume(struct device *dev);
 
-//begin:add tp hardware information by fangzhihua, 2017-10-15
-extern void fts_get_tp_info(void);
-//end:add tp hardware information by fangzhihua, 2017-10-15
-
 static ssize_t fts_tplockdown_read(struct file *file, char *buf, size_t len, loff_t *pos)
 {
 	size_t count = 0;
@@ -1510,10 +1506,6 @@ static int fts_ts_probe_entry(struct fts_ts_data *ts_data)
     ts_data->early_suspend.resume = fts_ts_late_resume;
     register_early_suspend(&ts_data->early_suspend);
 #endif
-
-    //begin: add tp hardware information by fangzhihua, 2018-10-24
-    fts_get_tp_info();
-    //end: add tp hardware information by fangzhihua, 2018-10-24
 
     FTS_FUNC_EXIT();
     return 0;
